@@ -1,10 +1,19 @@
 package com.example.gfnlibraryv2;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+/* Indicates that object is a JPA Entity */
+@Entity
 public class Game {
     /* 
-        Add JPA functionality for Games
+        JPA will recognise id as the Object's id
     */ 
-    private final long id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private final Long id;
     private final String title;
     private final String sortName;
     private final boolean fullyOptimized;
@@ -14,6 +23,9 @@ public class Game {
     private final String store;
     private final String genres;
     private final String imageUrl;
+
+    /* exists solely for the sake of JPA */
+    protected Game() {}
     
     public Game(long id, String title, String sortName, boolean fullyOptimized, String steamUrl, 
     String publisher, String status, String store, String genres, String imageUrl) {
@@ -27,6 +39,14 @@ public class Game {
         this.store = store;
         this.genres = genres;
         this.imageUrl = imageUrl;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Game: Title %s, ID %d",
+            title, id
+        );
     }
     
     public long getId() {
