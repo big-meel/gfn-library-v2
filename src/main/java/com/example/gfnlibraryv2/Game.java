@@ -13,16 +13,16 @@ public class Game {
     */ 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private final Long id;
-    private final String title;
-    private final String sortName;
-    private final boolean fullyOptimized;
-    private final String steamUrl;
-    private final String publisher;
-    private final String status;
-    private final String store;
-    private final String genres;
-    private final String imageUrl;
+    private Long id;
+    private String title;
+    private String sortName;
+    private boolean fullyOptimized;
+    private String steamUrl;
+    private String publisher;
+    private String status;
+    private String store;
+    private String genres;
+    private String imageUrl;
 
     /* exists solely for the sake of JPA */
     protected Game() {}
