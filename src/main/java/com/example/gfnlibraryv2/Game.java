@@ -12,7 +12,7 @@ public class Game {
         JPA will recognise id as the Object's id
     */ 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    // @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String title;
     private String sortName;
@@ -21,24 +21,92 @@ public class Game {
     private String publisher;
     private String status;
     private String store;
-    private String genres;
+    private String genres; //this may need to be changed to a List or Array of Strings
     private String imageUrl;
 
     /* exists solely for the sake of JPA */
     protected Game() {}
-    
-    public Game(long id, String title, String sortName, boolean fullyOptimized, String steamUrl, 
-    String publisher, String status, String store, String genres, String imageUrl) {
-        this.id = id;
-        this.title = title;
-        this.sortName = sortName;
-        this.fullyOptimized = fullyOptimized;
-        this.steamUrl = steamUrl;
-        this.publisher = publisher;
-        this.status = status;
-        this.store = store;
-        this.genres = genres;
-        this.imageUrl = imageUrl;
+
+    // Implement Builder pattern
+    public static class Builder {
+        // required
+        // private final Long id;
+        
+        private String title = null;
+        private String sortName = null;
+        private boolean fullyOptimized = false;
+        private String steamUrl = null;
+        private String publisher =  null;
+        private String status = null;
+        private String store = null;
+        private String genres = null;
+        private String imageUrl =  null;
+        
+        public Builder(Long value) {
+            this.id = value;
+        }
+        
+        public Builder title(String value) {
+            title = value;
+            return this;
+        }
+
+        public Builder sortName(String value) {
+            sortName = value;
+            return this;
+        }
+        
+        public Builder fullyOptimized(boolean value) {
+            fullyOptimized = value;
+            return this;
+        }
+
+        public Builder steamUrl(String value) {
+            steamUrl = value;
+            return this;
+        }
+
+        public Builder publisher(String value) {
+            publisher = value;
+            return this;
+        }
+
+        public Builder status(String value) {
+            status = value;
+            return this;
+        }
+
+        public Builder store(String value) {
+            store = value;
+            return this;
+        }
+
+        public Builder genres(String value) {
+            genres = value;
+            return this;
+        }
+
+        public Builder imageUrl(String value) {
+            imageUrl = value;
+            return this;
+        }
+
+        public Game build() {
+            return new Game(this);
+        }
+
+    }
+
+    private Game(Builder builder) {
+        title = builder.title;
+        sortName = builder.sortName;
+        fullyOptimized = builder.fullyOptimized;
+        steamUrl = builder.steamUrl;
+        publisher = builder.publisher;
+        status = builder.status;
+        store = builder.store;
+        genres = builder.genres;
+        imageUrl = builder.imageUrl;        
     }
 
     @Override
