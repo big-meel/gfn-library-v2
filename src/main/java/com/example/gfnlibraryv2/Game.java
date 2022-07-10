@@ -12,7 +12,7 @@ public class Game {
         JPA will recognise id as the Object's id
     */ 
     @Id
-    // @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String title;
     private String sortName;
@@ -30,7 +30,7 @@ public class Game {
     // Implement Builder pattern
     public static class Builder {
         // required
-        // private final Long id;
+        private final Long id;
         
         private String title = null;
         private String sortName = null;
@@ -98,6 +98,7 @@ public class Game {
     }
 
     private Game(Builder builder) {
+        id = builder.id;
         title = builder.title;
         sortName = builder.sortName;
         fullyOptimized = builder.fullyOptimized;
