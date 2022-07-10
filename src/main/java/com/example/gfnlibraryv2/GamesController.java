@@ -3,6 +3,8 @@ package com.example.gfnlibraryv2;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -13,11 +15,8 @@ public class GamesController {
     private GameRepository repo;
 
     @GetMapping("/games")
-    public String index(){
-        for (Game game : repo.findAll()) {
-            return String.format("%s", game.toString());
-        }
-        return "End";
+    public @ResponseBody Iterable<Game> index(){
+        return repo.findAll();
     }
 
     @GetMapping("/test")
