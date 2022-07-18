@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /* Indicates that object is a JPA Entity */
 @Entity
+@Table(name = "games")
 public class Game {
     /* 
         JPA will recognise id as the Object's id
@@ -16,7 +18,7 @@ public class Game {
     private Long id;
     private String title;
     private String sortName;
-    private boolean fullyOptimized;
+    private boolean isFullyOptimized;
     private String steamUrl;
     private String publisher;
     private String status;
@@ -34,7 +36,7 @@ public class Game {
         
         private String title = null;
         private String sortName = null;
-        private boolean fullyOptimized = false;
+        private boolean isFullyOptimized = false;
         private String steamUrl = null;
         private String publisher =  null;
         private String status = null;
@@ -56,8 +58,8 @@ public class Game {
             return this;
         }
         
-        public Builder fullyOptimized(boolean value) {
-            fullyOptimized = value;
+        public Builder isFullyOptimized(boolean value) {
+            isFullyOptimized = value;
             return this;
         }
 
@@ -101,7 +103,7 @@ public class Game {
         id = builder.id;
         title = builder.title;
         sortName = builder.sortName;
-        fullyOptimized = builder.fullyOptimized;
+        isFullyOptimized = builder.isFullyOptimized;
         steamUrl = builder.steamUrl;
         publisher = builder.publisher;
         status = builder.status;
@@ -131,7 +133,7 @@ public class Game {
     }
     
     public boolean getOptimization() {
-        return fullyOptimized;
+        return isFullyOptimized;
     }
     
     public String getSteamUrl() {
