@@ -159,4 +159,13 @@ public class Game {
     public String getImageUrl() {
         return imageUrl;
     }
+
+    /* 
+        NEXT: Create a search by name method    
+        A sort by genre method
+        A class for creating new games using geforce now and 
+        one that fetches image url from gamedb
+        Setup background task
+
+    */
 }

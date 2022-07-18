@@ -28,6 +28,11 @@ public class GamesController {
         return game;
     }
 
+
+    /*
+     Add mapping for search
+    */
+
     @GetMapping("/test")
     public Game test() {
         Game game = new Game.Builder(counter.incrementAndGet())
