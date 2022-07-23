@@ -17,7 +17,11 @@ public class GamesController {
     private GameRepository repo;
 
     @GetMapping("/games")
-    public @ResponseBody Iterable<Game> index(){
+    public @ResponseBody Iterable<Game> index(@RequestParam("q") String q){
+        if (q != null) {
+            return repo.findByTitleContainingIgnoreCase(q);
+        }
+        
         return repo.findAll();
     }
 
